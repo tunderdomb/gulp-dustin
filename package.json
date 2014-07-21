@@ -8,8 +8,6 @@
   },
   "dependencies": {
     "dustin": "1.0.0",
-    "gulp-concat": "2.3.3",
-    "gulp": "3.8.6",
     "through2": "0.5.1",
     "gulp-util": "3.0.0"
   },
