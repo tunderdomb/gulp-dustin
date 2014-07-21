@@ -6,8 +6,8 @@ var through = require("through2")
 var PluginError = gutil.PluginError
 
 module.exports.compile = compile
-
 module.exports.render = render
+module.exports.copy = copy
 
 function compile( options ){
   var adapter = dustin(options)
@@ -49,4 +49,12 @@ function render( options, context ){
       done(err)
     })
   })
+}
+
+function copy( dest, resolvePath, options ){
+  options = options || {}
+  var dustinHelpers = options.dustinHelpers
+    , dustHelpers = options.dustHelpers
+    , userHelpers = options.userHelpers
+  dustin.copyClientLibs(dest, resolvePath, dustinHelpers, dustHelpers, userHelpers)
 }
