@@ -1,0 +1,8 @@
+<input {?role}role="{role}"{/role}
+       class="field"
+       type="{type}"
+       name="{name}"
+       value="{value}"
+       {?required}required=""{/required}
+  {?autocomplete}autocomplete="{autocomplete}"{/autocomplete}
+       placeholder="{placeholder}"/>
