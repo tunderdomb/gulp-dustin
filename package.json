@@ -1,13 +1,13 @@
 {
   "name": "gulp-dustin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Gulp plugin for dustin",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {
-    "dustin": "1.1.2",
+    "dustin": "^1.1.2",
     "through2": "0.5.1",
     "gulp-util": "3.0.0"
   },
