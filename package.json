@@ -1,6 +1,6 @@
 {
   "name": "gulp-dustin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Gulp plugin for dustin",
   "main": "index.js",
   "directories": {
