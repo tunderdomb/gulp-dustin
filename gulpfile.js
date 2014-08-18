@@ -28,10 +28,10 @@ gulp.task("render", function(  ){
     .pipe(gulp.dest("test/renders"))
 })
 
-dustin.copy("test", "/view/", {
-  dustinHelpers: true,
-  dustHelpers: true,
-  userHelpers: "test/helpers/*.js"
+dustin.client("test", "/view/", {
+  custom: true,
+  dust: true,
+  user: "test/helpers/*.js"
 })
 
 gulp.task("default", ["compile", "render"])

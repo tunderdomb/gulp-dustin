@@ -7,7 +7,7 @@
     "test": "test"
   },
   "dependencies": {
-    "dustin": "^1.1.2",
+    "dustin": "^1.2.0",
     "through2": "0.5.1",
     "gulp-util": "3.0.0"
   },

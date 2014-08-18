@@ -7,7 +7,7 @@ var PluginError = gutil.PluginError
 
 module.exports.compile = compile
 module.exports.render = render
-module.exports.copy = copy
+module.exports.client = client
 
 function compile( options ){
   var adapter = dustin(options)
@@ -37,7 +37,7 @@ function render( options, context ){
     if ( file.isStream() ) return this.emit("error", new PluginError("gulp-concat", "Streaming not supported"))
 
     var stream = this
-    adapter.render(file.path, file.contents.toString(), context, function( err, rendered ){
+    adapter.renderSource(file.contents.toString(), context, function( err, rendered ){
       if( err ) return done(err)
       var renderedFile = new File({
         cwd: file.cwd,
@@ -51,10 +51,6 @@ function render( options, context ){
   })
 }
 
-function copy( dest, resolvePath, options ){
-  options = options || {}
-  var dustinHelpers = options.dustinHelpers
-    , dustHelpers = options.dustHelpers
-    , userHelpers = options.userHelpers
-  dustin.copyClientLibs(dest, resolvePath, dustinHelpers, dustHelpers, userHelpers)
+function client( dest, resolvePath, options ){
+  dustin.client(dest, resolvePath, options)
 }
