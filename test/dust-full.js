@@ -4138,8 +4138,8 @@
 /* https://github.com/linkedin/dustjs-helpers */
 !function ( f ){
   if ( typeof module != undefined && module.exports ) module.exports = f
-  else f(dust, dust.helpers)
-}(function ( dust ){
+  else f(dust.helpers, dust)
+}(function ( helpers, dust ){
 
 // Note: all error conditions are logged to console and failed silently
 
@@ -4240,8 +4240,6 @@
 
     return value;
   }
-
-  var helpers = dust.helpers = dust.helpers || {};
 
   // Utility helping to resolve dust references in the given chunk
   // uses the Chunk.render method to resolve value

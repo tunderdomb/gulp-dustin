@@ -6,8 +6,8 @@ gulp.task("compile", function(  ){
   gulp
     .src("test/view/*.dust")
     .pipe(dustin.compile({
-      "resolve": "test/view/",
-      "preserveWhiteSpace": false
+      "views": "test/view/",
+      "whiteSpace": false
     }))
     .pipe(gulp.dest("test/template"))
     .pipe(concat("inputs.js"))
@@ -18,8 +18,8 @@ gulp.task("render", function(  ){
   gulp
     .src("test/view/*.dust")
     .pipe(dustin.render({
-      "resolve": "test/view/",
-      "preserveWhiteSpace": false
+      "views": "test/view/",
+      "whiteSpace": false
     }, {
       title: "hello"
     }))

@@ -11,22 +11,22 @@ module.exports.client = client
 
 function compile( options ){
   var adapter = dustin(options)
+
   return through.obj(function( file, enc, done ){
     if ( file.isNull() ) return // ignore
     if ( file.isStream() ) return this.emit("error", new PluginError("gulp-concat", "Streaming not supported"))
 
     var stream = this
-    adapter.compile(file.path, file.contents.toString(), function( err, compiled ){
-      if( err ) return done(err)
-      var compiledFile = new File({
-        cwd: file.cwd,
-        base: file.base,
-        path: gutil.replaceExtension(file.path, ".js"),
-        contents: new Buffer(compiled)
-      })
-      stream.push(compiledFile)
-      done(err)
+    var templateName = adapter.getTemplateNameFromPath(file.path)
+    var compiled = adapter.compile(file.contents.toString(), templateName)
+    var compiledFile = new File({
+      cwd: file.cwd,
+      base: file.base,
+      path: gutil.replaceExtension(file.path, ".js"),
+      contents: new Buffer(compiled)
     })
+    stream.push(compiledFile)
+    done()
   })
 }
 

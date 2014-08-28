@@ -39,7 +39,6 @@ Options are the same as for dustin.
 
 Options are the same as for dustin.
 `context` will be passed to `adapter.render` under the hood.
-It can be either an object, or a function with a callback.
 
 ```js
 var gulp = require("gulp")
@@ -50,8 +49,8 @@ gulp.task("compile", function(  ){
   gulp
     .src("test/view/*.dust")
     .pipe(dustin.compile({
-      "resolve": "test/view/",
-      "preserveWhiteSpace": false
+      "views": "test/view/",
+      "whiteSpace": false
     }))
     .pipe(gulp.dest("test/template"))
     .pipe(concat("inputs.js"))
@@ -62,8 +61,8 @@ gulp.task("render", function(  ){
   gulp
     .src("test/view/*.dust")
     .pipe(dustin.render({
-      "resolve": "test/view/",
-      "preserveWhiteSpace": false
+      "views": "test/view/",
+      "whiteSpace": false
     }, {
       title: "hello"
     }))
@@ -72,10 +71,10 @@ gulp.task("render", function(  ){
     .pipe(gulp.dest("test/renders"))
 })
 
-dustin.copy("test", "/view/", {
-  dustinHelpers: true,
-  dustHelpers: true,
-  userHelpers: "test/helpers/*.js"
+dustin.client("test", "/view/", {
+  custom: true,
+  dust: true,
+  user: "test/helpers/*.js"
 })
 
 gulp.task("default", ["compile", "render"])
